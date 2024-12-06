@@ -16,16 +16,29 @@ addButton.addEventListener("click", () => {
 confirmButton.addEventListener("click", (event) => {
     event.preventDefault();
     let book = new Book(newBookTitle.value, newBookAuthor.value, newBookPagesCount.value, newBookDidRead.value);
-    addBookToLibrary(book);
+    book.addBookToLibrary();
     displayLibrary();
     addBookDialog.close();
 });
 
-function Book(title, author, pagesCount, didRead) {
-    this.title = title;
-    this.author = author;
-    this.pagesCount = pagesCount;
-    this.didRead = didRead;
+// function Book(title, author, pagesCount, didRead) {
+//     this.title = title;
+//     this.author = author;
+//     this.pagesCount = pagesCount;
+//     this.didRead = didRead;
+// }
+
+class Book {
+    constructor(title, author, pagesCount, didRead) {
+        this.title = title;
+        this.author = author;
+        this.pagesCount = pagesCount;
+        this.didRead = didRead;
+    }
+
+    addBookToLibrary() {
+        myLibrary.push(this);
+    }
 }
 
 const book1 = new Book("Harry Potter", "J. K. Rowling", 457, true);
@@ -33,9 +46,9 @@ const book2 = new Book("Game of Thrones", "George R. R. Martin", 691, false);
 const book3 = new Book("The Great Gatsby", "F. Scott Fitzegarld", 255, true);
 const book4 = new Book("The Shining", "Steven King", 531, false);
 
-function addBookToLibrary(book) {
-    myLibrary.push(book);
-}
+// function addBookToLibrary(book) {
+//     myLibrary.push(book);
+// }
 
 function displayLibrary() {
     libraryDisplay.innerHTML = "";
@@ -81,9 +94,13 @@ function displayLibrary() {
     }
 }
 
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-addBookToLibrary(book3);
-addBookToLibrary(book4);
+// addBookToLibrary(book1);
+// addBookToLibrary(book2);
+// addBookToLibrary(book3);
+// addBookToLibrary(book4);
+book1.addBookToLibrary();
+book2.addBookToLibrary();
+book3.addBookToLibrary();
+book4.addBookToLibrary();
 console.log(myLibrary);
 displayLibrary();
